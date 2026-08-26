@@ -1,9 +1,9 @@
-import threading
+from multiprocessing import Pool
 import time
 
 def radix(vetor):
     maior = max(vetor)
-    listas = [[] for _ in range(10)]
+    listas = [[] for i in range(10)]
 
     vetorFormatado = formatar_vetor(vetor, maior)
 
@@ -11,20 +11,11 @@ def radix(vetor):
         digito = int(num[0])
         listas[digito].append(num)
 
-    unidade = "1" + ("0" * (len(str(maior)) - 1))
-
-    threads = []
-
-    for i in range(10):
-        t = threading.Thread(target=merge_sort, args=(listas[i], unidade))
-        threads.append(t)
-        t.start()
-
-    for t in threads:
-        t.join()
+    with Pool() as pool:
+        listas_ordenadas = pool.map(merge_sort, listas)
 
     vetor_ordenado = []
-    for lista in listas:
+    for lista in listas_ordenadas:
         vetor_ordenado.extend(lista)
 
     vetor_ordenado = [int(num) for num in vetor_ordenado]
@@ -46,25 +37,19 @@ def formatar_vetor(vetor, maior):
 
         
 
-def merge_sort(vetor, unidade):
+def merge_sort(vetor):
     if len(vetor) > 1:
         mid = len(vetor) // 2
         left_half = vetor[:mid]  
         right_half = vetor[mid:]
 
-        merge_sort(left_half, unidade)
-        merge_sort(right_half, unidade)
+        merge_sort(left_half)
+        merge_sort(right_half)
 
         i = j = k = 0
 
         while i < len(left_half) and j < len(right_half):
-            div1 = int(left_half[i]) / int(unidade)
-            digito1 = div1 % 10
-
-            div2 = int(right_half[j]) / int(unidade)
-            digito2 = div2 % 10
-
-            if digito1 < digito2:
+            if left_half[i] < right_half[j]:
                 vetor[k] = left_half[i]
                 i += 1
             else:
@@ -82,7 +67,7 @@ def merge_sort(vetor, unidade):
             j += 1
             k += 1
 
-        return vetor
+    return vetor
 
 
 def max(vetor):
@@ -109,7 +94,7 @@ def main():
     vetor = []
 
 
-    with open("numeros_1M_embaralhado.csv", "r") as f:
+    with open("numeros_100M_embaralhado.csv", "r") as f:
         for linha in f:
             valor_limpo = linha.strip()
             
