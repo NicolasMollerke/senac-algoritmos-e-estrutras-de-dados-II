@@ -94,7 +94,7 @@ def main():
     vetor = []
 
 
-    with open("numeros_100M_embaralhado.csv", "r") as f:
+    with open("numeros_1M_embaralhado.csv", "r") as f:
         for linha in f:
             valor_limpo = linha.strip()
             
@@ -105,13 +105,15 @@ def main():
 
 
     tempo_final = time.time()
-    duracao = int(tempo_final - tempo_inicial)
+    duracao = tempo_final - tempo_inicial
     min = duracao / 60
 
-    print(verificaOrdem(vetorOrdenando))
-    
-    print(f"{duracao} segundos")
-    print(f"{min:.2f} minutos")
+    resultado = verificaOrdem(vetorOrdenando)
+
+    print(f"|-----Teste com 10M de números-----|")
+    print(f"|Resultado: {resultado}............")
+    print(f"|Segundos: {duracao:.2f}...........")
+    print(f"|Minutos: {min:.2f}................")
 
 if __name__ == "__main__":
     main()
