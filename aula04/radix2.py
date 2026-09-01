@@ -3,22 +3,22 @@ import time
 
 def radix(vetor):
     maior = max(vetor)
-    listas = [[] for i in range(10)]
+    listas = [[] for i in range(10)] #cria uma lista com 9 listas
 
     vetorFormatado = formatar_vetor(vetor, maior)
 
     for num in vetorFormatado:
         digito = int(num[0])
-        listas[digito].append(num)
+        listas[digito].append(num) #adiciona cada numero na lista equivalente a seu digito mais significativo
 
     with Pool() as pool:
-        listas_ordenadas = pool.map(merge_sort, listas)
+        listas_ordenadas = pool.map(merge_sort, listas) #executa o merge em todas as listas paralelamente
 
     vetor_ordenado = []
     for lista in listas_ordenadas:
-        vetor_ordenado.extend(lista)
+        vetor_ordenado.extend(lista) #concatena as listas em um vetor
 
-    vetor_ordenado = [int(num) for num in vetor_ordenado]
+    vetor_ordenado = [int(num) for num in vetor_ordenado] #converte os elementos de string para numero
 
     return vetor_ordenado
 
@@ -29,7 +29,7 @@ def formatar_vetor(vetor, maior):
     
     for num in vetor:
         if len(str(num)) <= len(str(maior)):
-            num = str(num).zfill(len(str(maior)))
+            num = str(num).zfill(len(str(maior))) #adiciona a quantidade de 0s a esquerda até ficar no mesmo tamanho do maior
         vetor_formatado[i] = num
         i = i + 1
 
@@ -97,7 +97,6 @@ def main():
     with open("numeros_1M_embaralhado.csv", "r") as f:
         for linha in f:
             valor_limpo = linha.strip()
-            
             if valor_limpo.isdigit():
                 vetor.append(int(valor_limpo))
 
@@ -110,7 +109,7 @@ def main():
 
     resultado = verificaOrdem(vetorOrdenando)
 
-    print(f"|-----Teste com 10M de números-----|")
+    print(f"|-----Teste com 1M de números-----|")
     print(f"|Resultado: {resultado}............")
     print(f"|Segundos: {duracao:.2f}...........")
     print(f"|Minutos: {min:.2f}................")
