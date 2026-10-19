@@ -146,8 +146,6 @@ def main():
 
     resultados = {}
 
-    # desenhar(labirinto, caminho)
-
     for nome_algoritmo, (caminho, casas_visitadas) in funcoes:
         resultados[nome_algoritmo] = { 'caminho': caminho, 'casas_visitadas': casas_visitadas}
 
@@ -161,6 +159,12 @@ def main():
         casas = dados['casas_visitadas']
     
         print(f"{algoritmo:<12} | {casas:<15} | {tamanho_caminho}")
+
+    for algoritmo, dados in resultados.items():
+        print()
+        print(f"{algoritmo}")
+        desenhar(labirinto, dados['caminho'])
+
 
 if __name__ == "__main__":
     main()
