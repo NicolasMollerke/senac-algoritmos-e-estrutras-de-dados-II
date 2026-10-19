@@ -1,9 +1,11 @@
+#Nicolas Mollerke e Ramiro Paz
+
 from multiprocessing import Pool
 import time
 
 def radix(vetor):
     maior = max(vetor)
-    listas = [[] for i in range(10)] #cria uma lista com 9 listas
+    listas = [[] for i in range(10)] #cria uma lista com 10 listas
 
     vetorFormatado = formatar_vetor(vetor, maior)
 
@@ -113,6 +115,7 @@ def main():
     print(f"|Resultado: {resultado}............")
     print(f"|Segundos: {duracao:.2f}...........")
     print(f"|Minutos: {min:.2f}................")
+    print(vetorOrdenando)
 
 if __name__ == "__main__":
     main()
