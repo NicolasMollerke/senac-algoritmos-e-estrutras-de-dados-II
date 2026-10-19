@@ -1,4 +1,8 @@
 *.exe
+*.txt
+*.csv
+*.env
 *.o
 *.pdf
-.vscode/
+node_modules/
+*.txt
