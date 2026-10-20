@@ -37,7 +37,7 @@ Ao executar os algoritmos em nossos cenários de teste, obtivemos as seguintes m
 |-------------|-------------------------|--------------------|
 | **DFS**     | 43          | 43                             |
 | **BFS**     | 107         | 41                             |
-| **Gulosa**  | 107         | 41                             |
+| **Gulosa**  | 48          | 43                             |
 
 ### Análise de Desempenho
 Como é possível analisar pela tabela, embora a DFS tenha visitado bem menos casas (43), ela não encontrou o menor caminho. Isso ocorre porque a sua estrutura encontra sempre a primeira rota viável com base na ordem dos vizinhos escolhidos, e não necessariamente a rota mais curta. Enquanto isso a BFS e a Busca Gulosa, por fazerem uma varredura maior acabam encontrando o caminho mais curto ao custo de um maior número de casas visitadas.

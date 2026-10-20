@@ -142,7 +142,7 @@ def main():
     saida = achar(labirinto, 'F') 
 
     caminho, casas_visitadas = dfs(grafo, inicio, saida)
-    funcoes = [('DFS', dfs(grafo, inicio, saida)), ('BFS', bfs(grafo, inicio, saida)), ('Gulosa', bfs(grafo, inicio, saida))]
+    funcoes = [('DFS', dfs(grafo, inicio, saida)), ('BFS', bfs(grafo, inicio, saida)), ('Gulosa', gulosa(grafo, inicio, saida))]
 
     resultados = {}
 
