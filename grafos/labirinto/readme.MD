@@ -35,9 +35,9 @@ Ao executar os algoritmos em nossos cenários de teste, obtivemos as seguintes m
 
 | Algoritmo   | Casas Visitadas (Custo) | Tamanho do Caminho |
 |-------------|-------------------------|--------------------|
-| **DFS**     | 43          | 43                             |
-| **BFS**     | 107         | 41                             |
-| **Gulosa**  | 48          | 43                             |
+| **DFS**     | 56          | 56                             |
+| **BFS**     | 164         | 41                             |
+| **Gulosa**  | 60          | 47                             |
 
 ### Análise de Desempenho
-Como é possível analisar pela tabela, embora a DFS tenha visitado bem menos casas (43), ela não encontrou o menor caminho. Isso ocorre porque a sua estrutura encontra sempre a primeira rota viável com base na ordem dos vizinhos escolhidos, e não necessariamente a rota mais curta. Enquanto isso a BFS, por fazer uma varredura maior acaba encontrando o caminho mais curto ao custo de um maior número de casas visitadas.
+Como é possível analisar pela tabela, embora a DFS tenha visitado bem menos casas (56), ela não encontrou o menor caminho. Isso ocorre porque a sua estrutura encontra sempre a primeira rota viável com base na ordem dos vizinhos escolhidos, e não necessariamente a rota mais curta. Enquanto isso a BFS, por fazer uma varredura maior acaba encontrando o caminho mais curto ao custo de um maior número de casas visitadas.
